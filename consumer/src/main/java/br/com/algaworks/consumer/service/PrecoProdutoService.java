@@ -23,7 +23,7 @@ public class PrecoProdutoService {
 		Mono<ProdutoComPreco> monoProduto = this.webClientProdutos
 			.method(HttpMethod.GET)
 			.uri("/produtos/{codigo}", codigoProduto)
-			.retrieve()
+			.retrieve()// não devolve o objeto
 			.bodyToMono(ProdutoComPreco.class);
 	
 		Mono<ProdutoComPreco> monoPreco = this.webClientPrecos
@@ -54,7 +54,7 @@ public class PrecoProdutoService {
 				.retrieve()
 				.bodyToMono(ProdutoComPreco.class);
 		
-		ProdutoComPreco produto = monoProduto.block();
+		ProdutoComPreco produto = monoProduto.block();// esse block é para evitar que a execução continue
 		ProdutoComPreco preco = monoPreco.block();
 
 		produto.setPreco(preco.getPreco());

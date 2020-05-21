@@ -13,7 +13,7 @@ public class ConsumerApplication {
 	@Bean
 	public WebClient webClientProdutos(WebClient.Builder builder) {
 		return builder
-			.baseUrl("http://localhost:8081")
+			.baseUrl("http://localhost:8081")//define a base url padrao
 			.defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
 			.build();
 	}
